@@ -53,17 +53,18 @@
         formControlName="correo"
         [class.is-invalid]="correoNoValido"
         [class.is-valid]="correoValido"
+        
       />
+
       <small *ngIf="correoNoValido" class="text-danger">
         Ingrese el correo
       </small>
       <small *ngIf="correoValido" class="text-success" >
         Correcto
       </small>
+
     </div>
   </div>
-
-
 
 
   <div class="form-group row" formGroupName="direccion">
