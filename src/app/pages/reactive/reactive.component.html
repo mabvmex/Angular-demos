@@ -4,50 +4,113 @@
   <div>
     <div class="form-group row">
       <label class="col-2 col-form-label">Nombre</label>
-      <div class="col-8">
+      <div class="col">
         <input
           class="form-control"
           type="text"
           placeholder="Nombre"
           formControlName="nombre"
           [class.is-invalid]="nombreNoValido"
+          [class.is-valid]="nombreValido"
         />
-        <small *ngIf="nombreNoValido" class="text-danger"> Ingrese el nombre </small>
+        <small *ngIf="nombreNoValido" class="text-danger">
+          Ingrese el nombre, al menos 5 letras.
+        </small>
+        <small *ngIf="nombreValido" class="text-success" >
+          Correcto
+        </small>
       </div>
     </div>
 
     <div class="form-group row">
       <label class="col-2 col-form-label">Apellido</label>
-      <div class="col-8">
+      <div class="col">
         <input
           class="form-control"
           type="text"
           placeholder="Apellido"
           formControlName="apellido"
           [class.is-invalid]="apellidoNoValido"
-          />
-          <small *ngIf="apellidoNoValido" class="text-danger"> Ingrese el apellido </small>
+          [class.is-valid]="apellidoValido"
+        />
+        <small *ngIf="apellidoNoValido" class="text-danger">
+          Ingrese el apellido
+        </small>
+        <small *ngIf="apellidoValido" class="text-success" >
+          Correcto
+        </small>
       </div>
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">Correo</label>
-    <div class="col-8">
+    <div class="col">
       <input
         class="form-control"
         type="email"
         placeholder="Correo electrónico"
         formControlName="correo"
         [class.is-invalid]="correoNoValido"
+        [class.is-valid]="correoValido"
+      />
+      <small *ngIf="correoNoValido" class="text-danger">
+        Ingrese el correo
+      </small>
+      <small *ngIf="correoValido" class="text-success" >
+        Correcto
+      </small>
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group row" formGroupName="direccion">
+    <label class="col-2 col-form-label">Dirección</label>
+    <div class="form-row col">
+      <div class="col">
+        <input
+          class='form-control'
+          type="text"
+          placeholder="Colonia"
+          formControlName = "colonia"
+          [class.is-invalid]="coloniaNoValido"
+          [class.is-valid]="coloniaValido"
         />
-        <small *ngIf="correoNoValido" class="text-danger"> Ingrese el correo </small>
+        <small *ngIf="coloniaNoValido" class="text-danger" >
+          Ingrese la colonia
+        </small>
+
+        <small *ngIf="coloniaValido" class="text-success" >
+          Correcto
+        </small>
+      </div>
+
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Ciudad"
+          formControlName="ciudad"
+          [class.is-invalid]="ciudadNoValido"
+          [class.is-valid]="ciudadValido"
+        />
+        <small *ngIf="ciudadNoValido" class="text-danger" >
+          Ingrese la ciudad
+        </small>
+
+        <small *ngIf="ciudadValido" class="text-success" >
+          Correcto
+        </small>
+
+      </div>
     </div>
   </div>
 
   <div class="form-group row">
     <label class="col-2 col-form-label">&nbsp;</label>
-    <div class="input-group col-md-8">
+    <div class="input-group col">
       <button type="submit" class="btn btn-outline-primary btn-block">
         Guardar
       </button>
