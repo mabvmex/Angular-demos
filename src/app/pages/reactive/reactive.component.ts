@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive',
@@ -15,6 +15,10 @@ export class ReactiveComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  get pasatiempos() {
+    return this.forma.get('pasatiempos') as FormArray;
+  }
 
   get nombreNoValido() {
     return this.forma.get('nombre').invalid && this.forma.get('nombre').touched;
@@ -87,6 +91,9 @@ export class ReactiveComponent implements OnInit {
         colonia: ['', [Validators.required, Validators.minLength(2)]],
         ciudad: ['', [Validators.required, Validators.minLength(2)]],
       }),
+      pasatiempos: this.fb.array([
+        [], [], []
+      ])
     });
   }
 
