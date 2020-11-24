@@ -92,7 +92,7 @@ export class ReactiveComponent implements OnInit {
         ciudad: ['', [Validators.required, Validators.minLength(2)]],
       }),
       pasatiempos: this.fb.array([
-        [], [], []
+        
       ])
     });
   }
@@ -108,6 +108,15 @@ export class ReactiveComponent implements OnInit {
         ciudad: 'Tula',
       },
     });
+  }
+
+
+  agregarPasatiempo( ) {
+    this.pasatiempos.push(this.fb.control('', []));
+  }
+
+  borrarPasariempo(i: number) {
+    this.pasatiempos.removeAt(i);
   }
 
   guardar() {

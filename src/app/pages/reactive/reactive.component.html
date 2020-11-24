@@ -116,8 +116,11 @@
               >
             </td>
             <td> 
-              <button class="btn btn-danger"> 
-                Borrar 
+              <button 
+                class="btn btn-danger"
+                (click)="borrarPasariempo(i)"
+                > 
+                  Borrar 
               </button>
             </td>
           </tr>
@@ -126,10 +129,10 @@
 
       <button 
         class="btn btn-primary mt-3 mb-5 btn-block"
-        type="button">
-
+        type="button"
+        (click)="agregarPasatiempo()"
+        >
         + Agregar
-        
       </button>
     </div>
   </div>
