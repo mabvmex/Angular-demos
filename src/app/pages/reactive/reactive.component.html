@@ -13,10 +13,8 @@
           [class.is-invalid]="nombreNoValido"
           [class.is-valid]="nombreValido"
         />
-        <small *ngIf="nombreNoValido" class="text-danger">
-          Ingrese el nombre, al menos 5 letras.
-        </small>
         <small *ngIf="nombreValido" class="text-success"> Correcto </small>
+        <small *ngIf="nombreNoValido" class="text-danger"> Ingrese el nombre, al menos 5 letras. </small>
       </div>
     </div>
 
@@ -31,10 +29,8 @@
           [class.is-invalid]="apellidoNoValido"
           [class.is-valid]="apellidoValido"
         />
-        <small *ngIf="apellidoNoValido" class="text-danger">
-          Ingrese el apellido
-        </small>
         <small *ngIf="apellidoValido" class="text-success"> Correcto </small>
+        <small *ngIf="apellidoNoValido" class="text-danger"> Ingrese el apellido </small>
       </div>
     </div>
   </div>
@@ -50,13 +46,47 @@
         [class.is-invalid]="correoNoValido"
         [class.is-valid]="correoValido"
       />
-
-      <small *ngIf="correoNoValido" class="text-danger">
-        Ingrese el correo
-      </small>
       <small *ngIf="correoValido" class="text-success"> Correcto </small>
+      <small *ngIf="correoNoValido" class="text-danger"> Ingrese el correo </small>
     </div>
   </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Password</label>
+    <div class="col">
+      <input
+        class="form-control"
+        type="password"
+        placeholder="Password"
+        formControlName="pass"
+        [class.is-invalid]="passNoValido"
+        [class.is-valid]="passValido"
+        />
+        <small *ngIf="passNoValido" class="text-danger">Ingrese la contraseña </small>
+        <small *ngIf="passValido" class="text-success"> Correcto </small>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label"> Repetir password </label>
+    <div class="col">
+      <input
+        class="form-control"
+        type="password"
+        placeholder="Repetir password"
+        formControlName="repeatPass"
+        [class.is-invalid]="repeatPassNoValido"
+        [class.is-valid]="repeatPassValido"
+        />
+      <!-- <small *ngIf="repeatPassValido" class="text-success"> Correcto </small> -->
+      <small *ngIf="repeatPassNoValido" class="text-danger"> Ingrese la contraseña correcta </small>
+    </div>
+  </div> 
+
+
+
 
   <div class="form-group row" formGroupName="direccion">
     <label class="col-2 col-form-label">Dirección</label>
@@ -70,11 +100,10 @@
           [class.is-invalid]="coloniaNoValido"
           [class.is-valid]="coloniaValido"
         />
-        <small *ngIf="coloniaNoValido" class="text-danger">
-          Ingrese la colonia
-        </small>
-
+        
+        <small *ngIf="coloniaNoValido" class="text-danger"> Ingrese la colonia </small>
         <small *ngIf="coloniaValido" class="text-success"> Correcto </small>
+
       </div>
 
       <div class="col">
@@ -86,11 +115,9 @@
           [class.is-invalid]="ciudadNoValido"
           [class.is-valid]="ciudadValido"
         />
-        <small *ngIf="ciudadNoValido" class="text-danger">
-          Ingrese la ciudad
-        </small>
-
+        <small *ngIf="ciudadNoValido" class="text-danger"> Ingrese la ciudad </small>
         <small *ngIf="ciudadValido" class="text-success"> Correcto </small>
+        
       </div>
     </div>
   </div>
@@ -118,7 +145,7 @@
             <td> 
               <button 
                 class="btn btn-danger"
-                (click)="borrarPasariempo(i)"
+                (click)="borrarPasatiempo(i)"
                 > 
                   Borrar 
               </button>
