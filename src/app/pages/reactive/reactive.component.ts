@@ -18,6 +18,8 @@ export class ReactiveComponent implements OnInit {
     // this.cargarDataAlFormulario();
   }
 
+
+
   ngOnInit(): void {}
 
   get pasatiempos() { return this.forma.get('pasatiempos') as FormArray; }
@@ -37,15 +39,15 @@ export class ReactiveComponent implements OnInit {
   get ciudadValido()   { return this.forma.get('direccion.ciudad').valid && this.forma.get('direccion.ciudad').touched; }
   get ciudadNoValido() { return this.forma.get('direccion.ciudad').invalid && this.forma.get('direccion.ciudad').touched; }
 
-  get passValido()   { return this.forma.get('pass').valid && this.forma.get('pass').touched; } 
-  get passNoValido() { return this.forma.get('pass').invalid && this.forma.get('pass').touched; } 
+  get passwordValido()   { return this.forma.get('password').valid && this.forma.get('password').touched; } 
+  get passwordNoValido() { return this.forma.get('password').invalid && this.forma.get('password').touched; } 
   
-  get repeatPassValido() { return this.forma.get('repeatPass').valid }
-  get repeatPassNoValido() { 
-    const pass = this.forma.get('pass').value;
-    const repeatPass = this.forma.get('repeatPass').value;
+  get repeatPasswordValido() { return this.forma.get('repeatPassword').valid }
+  get repeatPasswordNoValido() { 
+    const password = this.forma.get('password').value;
+    const repeatPassword = this.forma.get('repeatPassword').value;
     
-    return (pass === repeatPass ) ? false : true
+    return (password === repeatPassword ) ? false : true
 
   }
     
@@ -55,19 +57,19 @@ export class ReactiveComponent implements OnInit {
       nombre:   ['Miguel', [ Validators.required, Validators.minLength(2)] ],
       apellido: [ 'herrerax', [ Validators.required, Validators.minLength(2), this.validadores.noHerrera ] ],
       correo:   [ 'mabvmet@a.com', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$') ] ],
-      pass:     [ 'cinco', [Validators.required, Validators.minLength(5) ] ],
-      repeatPass:   [ 'cinco', [Validators.required ] ],
+      password:     [ '', [Validators.required, Validators.minLength(5) ] ],
+      repeatPassword:   [ '', [Validators.required] ],
       direccion: this.fb.group({ 
         colonia:  ['Centro', [ Validators.required, Validators.minLength(2)] ], 
         ciudad:   ['Tula', [ Validators.required, Validators.minLength(2)] ]
       }),
       pasatiempos: this.fb.array([]),
     },{
-      Validators: this.validadores.passwordsIguales('pass1','pass2')
-    });
+      validators: this.validadores.passwordsIguales('pass1','repeatPass2')
+    }); 
   }
 
-  cargarDataAlFormulario() {
+  /* cargarDataAlFormulario() {
     // this.forma.setValue({
     this.forma.reset({
       nombre: 'Miguel',
@@ -81,7 +83,7 @@ export class ReactiveComponent implements OnInit {
 
     // ['comer', 'dormir'].forEach(valor => this.pasatiempos.push(this.fb.control(valor)));
   }
-
+ */
   agregarPasatiempo() { this.pasatiempos.push (this.fb.control('', [])) }
   borrarPasatiempo(i: number) { this.pasatiempos.removeAt(i); }
 
@@ -104,14 +106,3 @@ export class ReactiveComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-
-    /* minuto 3:50
-
-    return ( Condición ) ? Si se cumple... False : Si no se cumple... TRUE
-    
-    */

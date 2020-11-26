@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   providedIn: 'root',
 })
 export class ValidadoresService {
-  constructor() { }
+  constructor() {}
 
   noHerrera(control: FormControl): { [s: string]: boolean } {
     if (control.value?.toLowerCase() === 'herrera') {
@@ -16,17 +16,24 @@ export class ValidadoresService {
     return null;
   }
 
-  passwordsIguales(passwordValidation: string, repeatPasswordValidation: string) {
-    return (formGroup: FormGroup) => {
+  passwordsIguales(pass1Name: string, pass2Name: string) {
+    // return (formGroup: FormGroup) => {
+    //   const pass1Control = formGroup.controls[pass1Name];
+    //   const pass2Control = formGroup.controls[pass2Name];
 
-      const passwordControl = formGroup.controls[passwordValidation];
-      const repeatPasswordControl = formGroup.controls[repeatPasswordValidation];
-
-      if (passwordControl.value === repeatPasswordControl.value) {
-        repeatPasswordControl.setErrors(null);
-      } else {
-        repeatPasswordControl.setErrors({ noEsIgual: true })
-      }
-    };
+    //   if (pass1Control.value === pass2Control.value) {
+    //     pass2Control.setErrors(null);
+    //   } else {
+    //     pass2Control.setErrors({ noEsIgual: true });
+    //   }
+    // };
   }
 }
+
+// console.log(pass1Control, '=> VARIABLES <=');
+
+// console.log(formGroup.value.password, '== FORMGROUP VALUE.PASSWORD ==');
+// console.log(formGroup.value.repeatPassword, '== FORMGROUP VALUE.REPEAT ==');
+
+// console.log(formGroup.controls.password.value, '== FORMGROUP CONTROLS.PASSWORD ==');
+// console.log(formGroup.controls.repeatPassword.value, '== FORMGROUP CONTROLS.REPEAT ==');

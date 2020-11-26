@@ -60,12 +60,12 @@
         class="form-control"
         type="password"
         placeholder="Password"
-        formControlName="pass"
-        [class.is-invalid]="passNoValido"
-        [class.is-valid]="passValido"
+        formControlName="password"
+        [class.is-invalid]="passwordNoValido"
+        [class.is-valid]="passwordValido"
         />
-        <small *ngIf="passNoValido" class="text-danger">Ingrese la contraseña </small>
-        <small *ngIf="passValido" class="text-success"> Correcto </small>
+        <small *ngIf="passwordNoValido" class="text-danger">Ingrese la contraseña </small>
+        <small *ngIf="passwordValido" class="text-success"> Correcto </small>
     </div>
   </div>
 
@@ -74,14 +74,14 @@
     <div class="col">
       <input
         class="form-control"
-        type="password"
+        type=" "
         placeholder="Repetir password"
-        formControlName="repeatPass"
-        [class.is-invalid]="repeatPassNoValido"
-        [class.is-valid]="repeatPassValido"
+        formControlName="repeatPassword"
+        [class.is-invalid]="repeatPasswordNoValido"
+        [class.is-valid]="repeatPasswordValido"
         />
-      <!-- <small *ngIf="repeatPassValido" class="text-success"> Correcto </small> -->
-      <small *ngIf="repeatPassNoValido" class="text-danger"> Ingrese la contraseña correcta </small>
+      <!-- <small *ngIf="repeatPasswordValido" class="text-success"> Correcto </small> -->
+      <small *ngIf="repeatPasswordNoValido" class="text-danger"> Ingrese la contraseña correcta </small>
     </div>
   </div> 
 
