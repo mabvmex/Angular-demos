@@ -14,7 +14,9 @@
           [class.is-valid]="nombreValido"
         />
         <small *ngIf="nombreValido" class="text-success"> Correcto </small>
-        <small *ngIf="nombreNoValido" class="text-danger"> Ingrese el nombre. (Al menos 5 letras) </small>
+        <small *ngIf="nombreNoValido" class="text-danger">
+          Ingrese el nombre. (Al menos 5 letras)
+        </small>
       </div>
     </div>
 
@@ -30,7 +32,9 @@
           [class.is-valid]="apellidoValido"
         />
         <small *ngIf="apellidoValido" class="text-success"> Correcto </small>
-        <small *ngIf="apellidoNoValido" class="text-danger"> Ingrese el apellido </small>
+        <small *ngIf="apellidoNoValido" class="text-danger">
+          Ingrese el apellido
+        </small>
       </div>
     </div>
   </div>
@@ -47,9 +51,35 @@
         [class.is-valid]="correoValido"
       />
       <small *ngIf="correoValido" class="text-success"> Correcto </small>
-      <small *ngIf="correoNoValido" class="text-danger"> Ingrese el correo </small>
+      <small *ngIf="correoNoValido" class="text-danger">
+        Ingrese el correo
+      </small>
     </div>
-  </div>
+  </div> 
+
+
+
+
+
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Usuario</label>
+    <div class="col">
+      <input
+        class="form-control"
+        type="text"
+        placeholder="Nombre de usuario"
+        formControlName="usuario"
+        [class.is-valid]="usuarioValido"
+        [class.is-invalid]="usuarioNoValido"
+        />
+
+      <small *ngIf="usuarioValido" class="text-success"> Correcto </small>
+      <small *ngIf="usuarioNoValido" class="text-danger"> Usuario no válido </small>
+    </div>
+  </div> 
+
+
+
 
 
 
@@ -63,9 +93,11 @@
         formControlName="password"
         [class.is-invalid]="passwordNoValido"
         [class.is-valid]="passwordValido"
-        />
-        <small *ngIf="passwordNoValido" class="text-danger">Ingrese la contraseña. (Al menos 5 caracteres) </small>
-        <small *ngIf="passwordValido" class="text-success"> Correcto </small>
+      />
+      <small *ngIf="passwordNoValido" class="text-danger"
+        >Ingrese la contraseña. (Al menos 5 caracteres)
+      </small>
+      <small *ngIf="passwordValido" class="text-success"> Correcto </small>
     </div>
   </div>
 
@@ -74,19 +106,20 @@
     <div class="col">
       <input
         class="form-control"
-        type=" "
+        type="password"
         placeholder="Repetir password"
         formControlName="repeatPassword"
         [class.is-invalid]="repeatPasswordNoValido"
         [class.is-valid]="repeatPasswordValido"
-        />
-      <small *ngIf="repeatPasswordValido" class="text-success"> Correcto </small>
-      <small *ngIf="repeatPasswordNoValido" class="text-danger"> Ingrese la contraseña correcta </small>
+      />
+      <small *ngIf="repeatPasswordValido" class="text-success">
+        Correcto
+      </small>
+      <small *ngIf="repeatPasswordNoValido" class="text-danger">
+        Ingrese la contraseña correcta
+      </small>
     </div>
-  </div> 
-
-
-
+  </div>
 
   <div class="form-group row" formGroupName="direccion">
     <label class="col-2 col-form-label">Dirección</label>
@@ -100,10 +133,11 @@
           [class.is-invalid]="coloniaNoValido"
           [class.is-valid]="coloniaValido"
         />
-        
-        <small *ngIf="coloniaNoValido" class="text-danger"> Ingrese la colonia </small>
-        <small *ngIf="coloniaValido" class="text-success"> Correcto </small>
 
+        <small *ngIf="coloniaNoValido" class="text-danger">
+          Ingrese la colonia
+        </small>
+        <small *ngIf="coloniaValido" class="text-success"> Correcto </small>
       </div>
 
       <div class="col">
@@ -115,9 +149,10 @@
           [class.is-invalid]="ciudadNoValido"
           [class.is-valid]="ciudadValido"
         />
-        <small *ngIf="ciudadNoValido" class="text-danger"> Ingrese la ciudad </small>
+        <small *ngIf="ciudadNoValido" class="text-danger">
+          Ingrese la ciudad
+        </small>
         <small *ngIf="ciudadValido" class="text-success"> Correcto </small>
-        
       </div>
     </div>
   </div>
@@ -134,31 +169,24 @@
         </thead>
         <tbody formArrayName="pasatiempos">
           <tr *ngFor="let control of pasatiempos.controls; let i = index">
-            <td> {{ i + 1 }} </td>
-            <td> 
-              <input 
-                class="form-control"
-                type="text"
-                [formControlName]="i"
-              >
+            <td>{{ i + 1 }} </td>
+            <td>
+              <input class="form-control" type="text" [formControlName]="i" />
             </td>
-            <td> 
-              <button 
-                class="btn btn-danger"
-                (click)="borrarPasatiempo(i)"
-                > 
-                  Borrar 
+            <td>
+              <button class="btn btn-danger" (click)="borrarPasatiempo(i)">
+                Borrar
               </button>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <button 
+      <button
         class="btn btn-primary mt-3 mb-5 btn-block"
         type="button"
         (click)="agregarPasatiempo()"
-        >
+      >
         + Agregar
       </button>
     </div>

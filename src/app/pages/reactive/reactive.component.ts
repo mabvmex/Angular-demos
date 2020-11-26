@@ -16,6 +16,7 @@ export class ReactiveComponent implements OnInit {
   ) {
     this.crearFormulario();
     // this.cargarDataAlFormulario();
+    this.crearListeners();
   }
 
 
@@ -32,6 +33,9 @@ export class ReactiveComponent implements OnInit {
 
   get correoValido()   { return this.forma.get('correo').valid && this.forma.get('correo').touched; }
   get correoNoValido() { return this.forma.get('correo').invalid && this.forma.get('correo').touched; }
+  
+  get usuarioValido()   { return this.forma.get('usuario').valid && this.forma.get('usuario').touched; }
+  get usuarioNoValido() { return this.forma.get('usuario').invalid && this.forma.get('usuario').touched; }
 
   get coloniaValido()   { return this.forma.get('direccion.colonia').valid &&  this.forma.get('direccion.colonia').touched; }
   get coloniaNoValido() { return this.forma.get('direccion.colonia').invalid && this.forma.get('direccion.colonia').touched; }
@@ -53,20 +57,35 @@ export class ReactiveComponent implements OnInit {
 
   crearFormulario() {
     this.forma = this.fb.group({
-      nombre:   [ '', [ Validators.required, Validators.minLength(2)] ],
-      apellido: [ '', [ Validators.required, Validators.minLength(2), this.validadores.noHerrera ] ],
-      correo:   [ '', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$') ] ],
-      password:     [ '', [Validators.required, Validators.minLength(5) ] ],
-      repeatPassword:   [ '', [Validators.required] ],
+      nombre:   [ 'asdfg', [ Validators.required, Validators.minLength(2)] ],
+      apellido: [ 'asdf', [ Validators.required, Validators.minLength(2), this.validadores.noHerrera ] ],
+      correo:   [ 'a@a.com', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$') ] ],
+      usuario:     [ '', [Validators.required, Validators.minLength(2) ], this.validadores.existeUsuario  ],
+      password:     [ 'asdfg', [Validators.required, Validators.minLength(5) ] ],
+      repeatPassword:   [ 'asdfg', [Validators.required] ],
       direccion: this.fb.group({ 
-        colonia:  ['', [ Validators.required, Validators.minLength(2)] ], 
-        ciudad:   ['', [ Validators.required, Validators.minLength(2)] ]
+        colonia:  ['as', [ Validators.required, Validators.minLength(2)] ], 
+        ciudad:   ['as', [ Validators.required, Validators.minLength(2)] ]
       }),
       pasatiempos: this.fb.array([]),
     },{
       validators: this.validadores.passwordsIguales('password','repeatPass')
     }); 
+
   }
+
+  crearListeners() {
+    this.forma.valueChanges.subscribe(valor => {
+      console.log(valor);
+    });
+
+    this.forma.statusChanges.subscribe(status => {
+      console.log(status);
+    });
+
+    this.forma.get('nombre').valueChanges.subscribe(console.log)
+  }
+
 
   /* cargarDataAlFormulario() {
     // this.forma.setValue({
