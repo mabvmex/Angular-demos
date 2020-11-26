@@ -14,7 +14,7 @@
           [class.is-valid]="nombreValido"
         />
         <small *ngIf="nombreValido" class="text-success"> Correcto </small>
-        <small *ngIf="nombreNoValido" class="text-danger"> Ingrese el nombre, al menos 5 letras. </small>
+        <small *ngIf="nombreNoValido" class="text-danger"> Ingrese el nombre. (Al menos 5 letras) </small>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
         [class.is-invalid]="passwordNoValido"
         [class.is-valid]="passwordValido"
         />
-        <small *ngIf="passwordNoValido" class="text-danger">Ingrese la contraseña </small>
+        <small *ngIf="passwordNoValido" class="text-danger">Ingrese la contraseña. (Al menos 5 caracteres) </small>
         <small *ngIf="passwordValido" class="text-success"> Correcto </small>
     </div>
   </div>
@@ -80,7 +80,7 @@
         [class.is-invalid]="repeatPasswordNoValido"
         [class.is-valid]="repeatPasswordValido"
         />
-      <small *ngIf="repeatPasswordValido" class="text-success"></small>
+      <small *ngIf="repeatPasswordValido" class="text-success"> Correcto </small>
       <small *ngIf="repeatPasswordNoValido" class="text-danger"> Ingrese la contraseña correcta </small>
     </div>
   </div> 
