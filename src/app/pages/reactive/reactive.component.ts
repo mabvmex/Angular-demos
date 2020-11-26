@@ -42,30 +42,29 @@ export class ReactiveComponent implements OnInit {
   get passwordValido()   { return this.forma.get('password').valid && this.forma.get('password').touched; } 
   get passwordNoValido() { return this.forma.get('password').invalid && this.forma.get('password').touched; } 
   
-  get repeatPasswordValido() { return this.forma.get('repeatPassword').valid }
+  get repeatPasswordValido() { return this.forma.get('repeatPassword').valid}
   get repeatPasswordNoValido() { 
     const password = this.forma.get('password').value;
     const repeatPassword = this.forma.get('repeatPassword').value;
-    
-    return (password === repeatPassword ) ? false : true
 
+    return ((password === repeatPassword ) ? false : true)
   }
     
 
   crearFormulario() {
     this.forma = this.fb.group({
-      nombre:   ['Miguel', [ Validators.required, Validators.minLength(2)] ],
+      nombre:   [ 'Miguel', [ Validators.required, Validators.minLength(2)] ],
       apellido: [ 'herrerax', [ Validators.required, Validators.minLength(2), this.validadores.noHerrera ] ],
-      correo:   [ 'mabvmet@a.com', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$') ] ],
+      correo:   [ 'a@a.com', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$') ] ],
       password:     [ '', [Validators.required, Validators.minLength(5) ] ],
       repeatPassword:   [ '', [Validators.required] ],
       direccion: this.fb.group({ 
         colonia:  ['Centro', [ Validators.required, Validators.minLength(2)] ], 
-        ciudad:   ['Tula', [ Validators.required, Validators.minLength(2)] ]
+        ciudad:   ['CDMX', [ Validators.required, Validators.minLength(2)] ]
       }),
       pasatiempos: this.fb.array([]),
     },{
-      validators: this.validadores.passwordsIguales('pass1','repeatPass2')
+      validators: this.validadores.passwordsIguales('password','repeatPass')
     }); 
   }
 
